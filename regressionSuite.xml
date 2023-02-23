@@ -1,0 +1,12 @@
+<suite name="Regression TestSuite">
+<test name="RegressionSuite">
+<groups>
+	<run>
+		<include name="regression"></include>
+	</run>
+</groups>
+	<classes>
+		<class name="Tests.Tests"></class>
+	</classes>
+</test>
+</suite>
