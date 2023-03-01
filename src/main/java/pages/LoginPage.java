@@ -72,7 +72,7 @@ public class LoginPage {
 		enterPassword(password);
 		if (signInBtn.isDisplayed()) {
 			ReportResult.Log("pass", "Username and Password have been entered correctly", true);
-			CM.waitAndClick(signInBtn, "Sign In Button");
+			clickSignInButton();
 		}else {
 			ReportResult.Log("fail", "Username and Password were not displayed to enter data", true);
 		}

@@ -3,6 +3,7 @@ package ConfigFiles;
 import java.io.IOException;
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,7 @@ public class CommonMethods {
 	WebDriver driver;
 	WebDriverWait wait;
 	
+	String acceptCookiesBtnLocator = "//button[contains(text(),'Accept Cookies')]";
 	@FindBy(xpath="//button[contains(text(),'Accept Cookies')]")
 	private WebElement acceptCookiesBtn;
 	
@@ -24,12 +26,33 @@ public class CommonMethods {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public WebElement getElement(String locator, String locatorType) {
+	public WebElement getElementExplicitWait(String locator, String locatorType) {
 		WebElement element = null;
-		try {
-			
-		}catch (Exception e){
-			
+		switch(locatorType.toLowerCase()) {
+		case("id"):
+			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id(locator)));
+			break;
+		case ("xpath"):
+			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
+			break;
+		case ("css"):
+			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(locator)));
+			break;
+		case ("class"):
+			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.className(locator)));
+			break;
+		case ("link"):
+			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.linkText(locator)));
+			break;
+		case ("partial"):
+			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText(locator)));
+			break;
+		case ("name"):
+			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.name(locator)));
+			break;
+		case ("tag"):
+			element = wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName(locator)));
+			break;
 		}
 		return element;
 	}
