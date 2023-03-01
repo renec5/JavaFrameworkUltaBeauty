@@ -2,6 +2,8 @@ package ConfigFiles;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
@@ -9,7 +11,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -26,7 +27,8 @@ public class ReportResult {
 	
 	public static ExtentReports startReport(String testName) {
 		 Date date = new Date();
-		 HTMLReport = new ExtentReports("/Users/rene.cortes/Desktop/reports/" + testName + "-" + Long.toString(date.getTime()) + ".html", false);
+		 DateFormat fmtDate = new SimpleDateFormat("HH-mm-ss");
+		 HTMLReport = new ExtentReports("/Users/rene.cortes/Desktop/reports/" + testName + "-" + fmtDate.format(date) + ".html", false);
 		 ReportManager = HTMLReport.startTest(testName);
 		 return HTMLReport;
 	}

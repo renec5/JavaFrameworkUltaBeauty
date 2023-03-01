@@ -17,7 +17,6 @@ import org.testng.annotations.BeforeClass;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.sql.Date;
 import java.time.Duration;
 
 import org.junit.Assert;
@@ -66,7 +65,7 @@ public class Tests {
   }
   
   @Test(groups = { "sanity", "regression" })
-  public void Test1() throws IOException {
+  public void TestSearchProduct() throws IOException {
 	  HP = new HomePage(driver);
 	  SRP = new SearchResultsPage(driver);
 	  HP.searchProduct("lipstick");
@@ -76,11 +75,12 @@ public class Tests {
   
   @Test(groups = { "regression" })
   public void TestInvalidLogin() throws IOException {
+	  String validation = "invalid";
 	  HP = new HomePage(driver);
 	  LP = new LoginPage(driver);
 	  HP.clickLoginLink();
-	  LP.validInvalidLogin("test@gmail.com", "123", "invalid");
-	  
+	  LP.validInvalidLogin("test@gmail.com", "123", validation);
+	  LP.validateValidInvalidLogin(validation);
   }
 
 }

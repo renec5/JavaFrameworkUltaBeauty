@@ -103,12 +103,12 @@
                     <div class="method-list-content passed suite-Regression_TestSuite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Regression_TestSuite" title="Tests.Tests" class="method navigator-link" hash-for-method="Test1">Test1</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Regression_TestSuite" title="Tests.Tests" class="method navigator-link" hash-for-method="TestInvalidLogin">TestInvalidLogin</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Regression_TestSuite" title="Tests.Tests" class="method navigator-link" hash-for-method="TestInvalidLogin">TestInvalidLogin</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Regression_TestSuite" title="Tests.Tests" class="method navigator-link" hash-for-method="TestSearchProduct">TestSearchProduct</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Regression_TestSuite -->
@@ -131,16 +131,16 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="Test1">
-                  </a> <!-- Test1 -->
-                  <span class="method-name">Test1</span>
+                  <a name="TestInvalidLogin">
+                  </a> <!-- TestInvalidLogin -->
+                  <span class="method-name">TestInvalidLogin</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="TestInvalidLogin">
-                  </a> <!-- TestInvalidLogin -->
-                  <span class="method-name">TestInvalidLogin</span>
+                  <a name="TestSearchProduct">
+                  </a> <!-- TestSearchProduct -->
+                  <span class="method-name">TestSearchProduct</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -190,11 +190,11 @@
               <span class="test-group-name">regression</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">Test1</span>
+                <span class="method-in-group-name">TestInvalidLogin</span>
                 <br/>
               </div> <!-- method-in-group -->
               <div class="method-in-group">
-                <span class="method-in-group-name">TestInvalidLogin</span>
+                <span class="method-in-group-name">TestSearchProduct</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -202,7 +202,7 @@
               <span class="test-group-name">sanity</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">Test1</span>
+                <span class="method-in-group-name">TestSearchProduct</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -224,18 +224,18 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'Test1')
+data.setCell(0, 1, 'TestSearchProduct')
 data.setCell(0, 2, 'Tests.Tests')
-data.setCell(0, 3, 7058);
+data.setCell(0, 3, 7946);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'TestInvalidLogin')
 data.setCell(1, 2, 'Tests.Tests')
-data.setCell(1, 3, 2116);
+data.setCell(1, 3, 2943);
 window.suiteTableData['Regression_TestSuite']= { tableData: data, tableDiv: 'times-div-Regression_TestSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 9 seconds</span>
+              <span class="suite-total-time">Total running time: 10 seconds</span>
               <div id="times-div-Regression_TestSuite">
               </div> <!-- times-div-Regression_TestSuite -->
             </div> <!-- times-div -->
@@ -267,32 +267,32 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
-                <span class="method-name">beforeMethod(public void Tests.Tests.Test1() throws java.io.IOException)</span>
-                <span class="method-start">8 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="test-method">
-                <span class="method-name">Test1</span>
-                <span class="method-start">4113 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">afterMethod</span>
-                <span class="method-start">11173 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-method before">
                 <span class="method-name">beforeMethod(public void Tests.Tests.TestInvalidLogin() throws java.io.IOException)</span>
-                <span class="method-start">11462 ms</span>
+                <span class="method-start">7 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">TestInvalidLogin</span>
-                <span class="method-start">15530 ms</span>
+                <span class="method-start">10195 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">afterMethod</span>
-                <span class="method-start">17647 ms</span>
+                <span class="method-start">13140 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">beforeMethod(public void Tests.Tests.TestSearchProduct() throws java.io.IOException)</span>
+                <span class="method-start">13381 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">TestSearchProduct</span>
+                <span class="method-start">22702 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterMethod</span>
+                <span class="method-start">30648 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">afterClass</span>
-                <span class="method-start">17841 ms</span>
+                <span class="method-start">30859 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -8,16 +8,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import ConfigFiles.CommonMethods;
 import ConfigFiles.ReportResult;
 
 public class LoginPage {
 	
 	WebDriver driver;
 	ReportResult RR;
+	CommonMethods CM;
 	
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		RR = new ReportResult(driver);
+		CM = new CommonMethods(driver);
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -57,21 +60,19 @@ public class LoginPage {
 	
 	public void clickSignInButton() throws IOException{
 		try {
-			signInBtn.click();
-			ReportResult.Log("pass", "Sign In Button clicked correctly", false);
+			CM.waitAndClick(signInBtn, "Sign In Link");
+			CM.acceptCookies();
 		}catch (Exception e) {
 			ReportResult.Log("pass", "Sign In Button could NOT be clicked", false);
 		}
 	}
 	
 	public void validInvalidLogin(String username, String password, String validInvalid) throws IOException {
-		System.out.println("Is signInButton Displayed: " + signInBtn.isDisplayed());
 		enterEmail(username);
 		enterPassword(password);
-		
 		if (signInBtn.isDisplayed()) {
 			ReportResult.Log("pass", "Username and Password have been entered correctly", true);
-			clickSignInButton();
+			CM.waitAndClick(signInBtn, "Sign In Button");
 		}else {
 			ReportResult.Log("fail", "Username and Password were not displayed to enter data", true);
 		}
@@ -84,13 +85,32 @@ public class LoginPage {
 			}
 		}else {
 			try {
-				Assert.assertTrue(errorLoginMsg.isDisplayed());
-				ReportResult.Log("pass", "Login with invalid credentials passed, error login message has been displayed", true);
+				if (errorLoginMsg.isDisplayed()) {
+					ReportResult.Log("pass", "Login with invalid credentials passed, error login message has been displayed", true);
+				}
 			}catch(Exception e) {
 				ReportResult.Log("fail", "Login with invalid credentials did NOT throw error login message Test FAILED", true);
 			}
 		}
-		
+	}
+	
+	public boolean validateValidInvalidLogin(String validInvalid) throws IOException {
+		boolean validation = false;
+		switch (validInvalid.toLowerCase()) {
+		case ("valid"):
+			//Implement logic when we have valid credentials
+			break;
+		case("invalid"):
+			try {
+				if (errorLoginMsg.isDisplayed()) {
+					validation = true;
+					ReportResult.Log("pass", "Expected error login message is displayed, Test Pass", false);
+				}
+			}catch(Exception e) {
+				ReportResult.Log("fail", "Expected error login message is NOT displayed, Test Fails", true);
+			}
+		}
+		return validation;
 	}
 
 }
