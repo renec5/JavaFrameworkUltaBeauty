@@ -17,7 +17,7 @@ public class CommonMethods {
 	WebDriverWait wait;
 	
 	String acceptCookiesBtnLocator = "//button[contains(text(),'Accept Cookies')]";
-	@FindBy(xpath="//button[contains(text(),'Accept Cookies')]")
+	@FindBy(css="#onetrust-accept-btn-handler:first-child")
 	private WebElement acceptCookiesBtn;
 	
 	public CommonMethods(WebDriver driver) {

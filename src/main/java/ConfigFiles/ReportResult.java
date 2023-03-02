@@ -25,10 +25,10 @@ public class ReportResult {
 		Driver = driver;
 	}
 	
-	public static ExtentReports startReport(String testName) {
+	public static ExtentReports startReport(String reportFolder, String testName) {
 		 Date date = new Date();
 		 DateFormat fmtDate = new SimpleDateFormat("HH-mm-ss");
-		 HTMLReport = new ExtentReports("/Users/rene.cortes/Desktop/reports/" + testName + "-" + fmtDate.format(date) + ".html", false);
+		 HTMLReport = new ExtentReports(reportFolder + testName + "-" + fmtDate.format(date) + ".html", false);
 		 ReportManager = HTMLReport.startTest(testName);
 		 return HTMLReport;
 	}

@@ -31,13 +31,13 @@ public class LoginPage {
 	@FindBy(id="password")
 	WebElement passwordField;
 	
-	@FindBy(xpath="//button[contains(text(),'Sign In')]")
+	@FindBy(css="div.SignIn__submit button")
 	WebElement signInBtn;
 	
-	@FindBy(xpath="//span[contains(text(),'The email address or password you entered is incorrect')]")
+	@FindBy(xpath="//p[contains(text(),'The email address or password you entered is incorrect')]")
 	WebElement errorLoginMsg;
 	
-	@FindBy(css="a[href='//www.ulta.com/forgot-password']")
+	@FindBy(css="div.SignIn__forgotCredentials a")
 	WebElement forgotPasswordLink;
 	
 	public void enterEmail(String email) throws IOException {
@@ -60,6 +60,7 @@ public class LoginPage {
 	
 	public void clickSignInButton() throws IOException{
 		try {
+			CM.acceptCookies();
 			CM.waitAndClick(signInBtn, "Sign In Link");
 			CM.acceptCookies();
 		}catch (Exception e) {

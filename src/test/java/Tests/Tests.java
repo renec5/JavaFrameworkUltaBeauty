@@ -6,6 +6,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import ConfigFiles.ReportResult;
+import dataProvider.ConfigFileReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.HomePage;
 import pages.LoginPage;
@@ -18,6 +19,7 @@ import org.testng.annotations.BeforeClass;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -33,19 +35,22 @@ public class Tests {
 	HomePage HP;
 	LoginPage LP;
 	SearchResultsPage SRP;
+	Properties properties;
 	
   
   @BeforeMethod(alwaysRun=true)
   public void beforeMethod(Method method) throws IOException {
-	  baseURL = "https://www.ulta.com/";
+	  properties = new ConfigFileReader().getProperties();
+	  
+	  //baseURL = "https://www.ulta.com/";
 	  String testName = method.getName();
-	  HTMLReport = ReportResult.startReport(testName);
+	  HTMLReport = ReportResult.startReport(properties.getProperty("reportFolder"), testName);
 	  ReportResult.Log("pass", "Report Result created successfully", false);
 	  WebDriverManager.chromedriver().setup();
 	  driver = new ChromeDriver();
 	  driver.manage().window().maximize();
-	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-	  driver.get(baseURL);
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Long.parseLong(properties.getProperty("implicitlyWait"))));
+	  driver.get(properties.getProperty("baseURL"));
 	  
   }
 
@@ -79,7 +84,7 @@ public class Tests {
 	  HP = new HomePage(driver);
 	  LP = new LoginPage(driver);
 	  HP.clickLoginLink();
-	  LP.validInvalidLogin("test@gmail.com", "123", validation);
+	  LP.validInvalidLogin(properties.getProperty("invalidUserName"), properties.getProperty("invalidPassword"), validation);
 	  LP.validateValidInvalidLogin(validation);
   }
 

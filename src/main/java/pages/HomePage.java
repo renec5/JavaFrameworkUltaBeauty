@@ -34,10 +34,10 @@ public class HomePage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(css="input[type='search']")
+	@FindBy(css="input#search")
 	private WebElement searchBar;
 	
-	@FindBy(css="button[type='submit']")
+	@FindBy(css="button[aria-label='Submit']")
 	private WebElement magnifierGlassBtn;
 	
 	@FindBy(id="opennav")
@@ -52,7 +52,7 @@ public class HomePage {
 	@FindBy(css="a[data-nav-description=\"h - gift cards\"]")
 	private WebElement giftCardsLink;
 	
-	@FindBy(css="a[data-nav-description='h - sign in']")
+	@FindBy(xpath="//span[contains(text(),'Join')]//parent::button")
 	private WebElement signInLink;
 	
 	@FindBy(xpath="//button[contains(text(),'Accept Cookies')]")
@@ -70,6 +70,7 @@ public class HomePage {
 	
 	public void clickLoginLink() throws IOException{
 		try {
+			CM.acceptCookies();
 			CM.waitAndClick(signInLink, "Sign In link");
 			Assert.assertTrue(LP.forgotPasswordLink.isDisplayed());
 			ReportResult.Log("pass", "Login Page displayed", true);

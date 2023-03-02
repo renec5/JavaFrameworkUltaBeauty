@@ -11,10 +11,10 @@
       <class name="Tests.Tests">
         <methods>
           <include name="afterClass"/>
-          <include name="TestInvalidLogin"/>
           <include name="beforeClass"/>
           <include name="beforeMethod"/>
           <include name="afterMethod"/>
+          <include name="TestSearchProduct"/>
         </methods>
       </class> <!-- Tests.Tests -->
     </classes>

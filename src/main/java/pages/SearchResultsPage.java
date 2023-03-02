@@ -20,14 +20,14 @@ public class SearchResultsPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(css="span.search-res-number")
+	@FindBy(css="div#product-listing-wrapper-resultslabel h2")
 	WebElement searchResultNumber;
 	
 	public boolean validateSearchResults() throws IOException {
 		 int resultsQty = -1;
 		 boolean flag = false;
 		try {
-			resultsQty = Integer.parseInt(searchResultNumber.getText());
+			resultsQty = Integer.parseInt(searchResultNumber.getText().split(" ")[0]);
 			if (resultsQty > 0) {
 				flag = true;
 				ReportResult.Log("pass", "There are " + resultsQty + " Found" , true);
@@ -35,7 +35,6 @@ public class SearchResultsPage {
 		}catch (Exception e) {
 			ReportResult.Log("fail", "Something went wrong and there are no search results for the specified criteria", true);
 		}
-		System.out.println(resultsQty);
 		return flag;
 	}
 
